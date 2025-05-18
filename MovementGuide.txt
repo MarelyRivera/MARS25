@@ -13,7 +13,7 @@ REQUIREMENTS:
 
 ##CAN Bus: Must be done after adapter is unplugged##
     sudo ip link set can0 up type can bitrate 250000
-    cd testing/ODriveResources/examples
+    cd testing1/ODriveResources/examples
     python3 can_enumerate.py --channel can0 left=0 right=1 --save-config
 
 
@@ -34,7 +34,7 @@ OPEN A NEW TERMINAL FOR EACH OF THESE NODES
 	    ros2 run twist_stamper twist_stamper --ros-args -r cmd_vel_in:=/turtle/cmd_vel -r cmd_vel_out:=/botwheel_explorer/cmd_vel
 
 	##Botwheel Node##
-	    cd testing/ros_odrive-main
+	    cd testing2/ros_odrive-main
 	    source ./install/setup.sh
 	    ros2 launch odrive_botwheel_explorer botwheel_explorer.launch.py
 
