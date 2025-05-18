@@ -1,0 +1,56 @@
+Movement Guide
+
+
+REQUIREMENTS:
+ - The robot must be wired up with both side motors functional
+ - The ODrives must be plugged into the CAN Bus through CAN Bus connectors
+ - The controller must be set up through USB Network Gate (VNC) or directly connected to the robot computer
+ - Robot battery is plugged in, computer has its own power source (outlet or computer battery)
+
+
+
+
+
+##CAN Bus: Must be done after adapter is unplugged##
+    sudo ip link set can0 up type can bitrate 250000
+    cd testing/ODriveResources/examples
+    python3 can_enumerate.py --channel can0 left=0 right=1 --save-config
+
+
+OPEN A NEW TERMINAL FOR EACH OF THESE NODES
+
+	##Joy Node##
+	    cd joy_ws
+	    ros2 run joy joy_node
+
+	##Control Turtle Node##
+	    cd joy_ws
+	    source /opt/ros/humble/setup.bash
+	    source install/local_setup.bash
+	    ros2 run control_turtle control_Node
+
+	##Twist Stamper Node##
+	    cd joy_ws
+	    ros2 run twist_stamper twist_stamper --ros-args -r cmd_vel_in:=/turtle/cmd_vel -r cmd_vel_out:=/botwheel_explorer/cmd_vel
+
+	##Botwheel Node##
+	    cd testing/ros_odrive-main
+	    source ./install/setup.sh
+	    ros2 launch odrive_botwheel_explorer botwheel_explorer.launch.py
+
+
+
+TROUBLESHOOTING
+	The ODrives do not connect when running Botwheel Node?
+		-Check to make sure that the ODrives are wired correctly, the computer must be plugged into the adapter ONLY.
+
+
+
+triangle - 3
+x - 1
+o - 2
+square - 4
+
+
+
+

@@ -1,0 +1,36 @@
+
+After any interaction with the USB-i2c converter, the driver must be reloaded.
+
+Plug in the IMU
+	Black	:GND
+	Red	:3.3v
+	Blue	:SDA
+	Yellow	:SCL
+
+Check for connection
+	sudo i2cdetect -y -r 2
+	
+	A device with address 28 should show up,if not check wiring.
+
+
+Start ROS2 node, run these commands
+
+	cd ros2_ws 
+	ros2 run bno055 bno055 --ros-args --params-file ./src/bno055/bno055/params/bno055_params_i2c.yaml
+	
+	
+ERRORS:
+	"local variable node referenced before argument" > you didnt type something right, check and try again.
+
+
+Publishes IMU data to "/joy/imu"
+Check ros topics with "ros2 topic list"
+
+
+
+
+
+
+
+
+

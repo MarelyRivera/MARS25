@@ -1,0 +1,16 @@
+
+Plug in the camera to a USB plug
+
+In the command line, type
+
+	guvcview or cheese
+	
+And a new window should open displaying the camera
+
+
+
+
+
+
+
+
